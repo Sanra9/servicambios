@@ -1,2 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "flag-icon";
+
+.myAlert-bottom{
+    position: fixed;
+    bottom: 5px;
+    left:50%;
+    width: 96%;
+}
