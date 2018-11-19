@@ -18,7 +18,11 @@
                 </thead>
                 <tbody>
                     <% @currencies.each do |currency| %>  
-                     <tr>
+                        <% if currency.available? %>    
+                     <tr class='success'>
+                        <% else %>
+                    <tr class='danger'>
+                    <% end %>
                         <% if user_signed_in? %>
                             <th>
                                 <span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span> <%= link_to currency.name, edit_currency_path(currency) %><br>
