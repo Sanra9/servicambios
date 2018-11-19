@@ -7,31 +7,33 @@
         </div>  
             <div class='col-sm-6 col-sm-offset-3'>
             <table class='table table-striped'>
-                <tr>
-                    <th>Currency</th>
-                    <th>Price buy</th>
-                    <th>Price sale</th>
-                </tr>
-                <% @currencies.each do |currency| %>    
-                <tr>
-                <% if user_signed_in? %>
-                    <th>
-                    <%= link_to currency.name, edit_currency_path(currency) %><br>
-                    <%= link_to 'Delete Currency', currency, method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: '¿Are you sure youwant to eliminate the currency?'} %>
-                    </th>
-                <% else %>
-                <th><%= currency.name %></th>
-                <% end %>
-                    <th><%= currency.price_buy %></th>
-                    <th><%= currency.price_sale %></th>   
-                </tr>
-                <% end %>
-            </table>
+                <thead>
+                    <tr class="info">
+                        <th>Currency</th>
+                        <th>Price buy</th>
+                        <th>Price sale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @currencies.each do |currency| %>    
+                    <tr>
+                    <% if user_signed_in? %>
+                        <th>
+                        <%= link_to currency.name, edit_currency_path(currency) %><br>
+                        <%= link_to 'Delete Currency', currency, method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: '¿Are you sure youwant to eliminate the currency?'} %>
+                        </th>
+                    <% else %>
+                    <th><%= currency.name %></th>
+                    <% end %>
+                        <th><%= currency.price_buy %></th>
+                        <th><%= currency.price_sale %></th>   
+                    </tr>
+                    <% end %>
+                <tbody>
+                </table>
             <div class='text-right'>
                <%= link_to 'Add Currency', new_currency_path, class: 'btn btn-primary'%>
             </div>
             </div>
-            
-        
     </div>
 </div>
