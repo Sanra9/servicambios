@@ -12,24 +12,20 @@
                 <div class='form-group'>
                     <%= f.number_field :price_sale, class: 'form-control input-lg', placeholder: 'Price Sale', step: :any %>
                 </div>
-                <div class='dropdown'>
-                    <button class="btn btn-default dropdown-toggle" type="button" id="flag-countries" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                    Country <span class="caret"></span></button>
-                    <ul class="dropdown-menu" aria-labelledby="flag-countries">
-                        <li><span class="flag-icon flag-icon-by"></li>
-                    </ul>
-                        
-                </div><br />
+                <div class='form-group'>
+                    <p>Country Flag</p>
+                    <%= f.country_select :country%>
+                </div>
                 <div class='form-check'>
                     <p>Disponible?</p>
-                    <%= f.radio_button :available, class: 'form-check-input', :checked => true %>
-                    <label class="form-check-label", for="available"> Sí </label> <br>
-                    <%= f.radio_button :available, class: 'form-check-input', :checked => false %>
-                    <label class="form-check-label", for="available"> No </label> <br>
+                    <%= label :available, 'Si', value: true%>
+                    <%= f.radio_button :available, true, :checked => true, :value => true%>
+                    <%= label :available, 'No', value: false%>
+                    <%= f.radio_button :available, false, :checked => true, :value => false%>     
                 </div>
                 <div>
                 <br>
-                <%= f.submit form_title, class: 'btn btn-primary btn-lg btn-block'%> 
+                <%= f.submit form_title, class: 'btn btn-primary btn-lg btn-block'%>
                 </div>
             <% end %>
         </div>
