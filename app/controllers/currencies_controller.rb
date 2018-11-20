@@ -2,6 +2,7 @@ class CurrenciesController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     def index
         @currencies = Currency.all
+        @currencies=@currencies.order(:position)
     end
 
     def new
@@ -43,6 +44,6 @@ class CurrenciesController < ApplicationController
 
     private
     def currency_params
-        params.require(:currency).permit(:name, :price_buy, :price_sale, :available, :country)
+        params.require(:currency).permit(:name, :price_buy, :price_sale, :available, :country, :position)
     end
 end
