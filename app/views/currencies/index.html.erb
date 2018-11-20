@@ -25,11 +25,23 @@
                     <% end %>
                         <% if user_signed_in? %>
                             <th>
-                                <span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span> <%= link_to currency.name, edit_currency_path(currency) %><br>
+                                <%if currency.name.downcase==='euro'%>
+                                <span class="flag-icon flag-icon-eu"></span>
+                                <% else %>
+                                <span class="flag-icon flag-icon-<%=currency.country.downcase%>">
+                                <% end %>
+                                </span> <%= link_to currency.name, edit_currency_path(currency) %><br>
                                 <%= link_to 'Delete Currency', currency, method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: '¿Are you sure youwant to eliminate the currency?'} %>
                             </th>
                         <% else %>
-                            <th><span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span> <%= currency.name %> </th>
+                        <th>
+                         <%if currency.name.downcase==='euro'%>
+                          <span class="flag-icon flag-icon-eu"></span>
+                          <% else %>
+                            <span class="flag-icon flag-icon-<%=currency.country.downcase%>">
+                         <% end %>
+                            </span> <%= currency.name %> 
+                        </th>
                         <% end %>
                         <th><%= currency.price_buy %></th>
                         <th><%= currency.price_sale %></th>   
