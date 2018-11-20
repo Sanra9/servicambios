@@ -15,4 +15,8 @@
 
 class Currency < ApplicationRecord
     belongs_to :user
+    validates :name, presence: true
+    validates :price_buy, presence: true
+    validates :price_sale, presence: true
+    validates :available, inclusion: [true, false]
 end

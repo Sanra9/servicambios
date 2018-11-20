@@ -43,9 +43,11 @@
                         <% end %>
                 <tbody>
                 </table>
+                <% if user_signed_in?%>
             <div class='text-right'>
                <%= link_to 'Add Currency', new_currency_path, class: 'btn btn-primary'%>
             </div>
+                <% end %>
             </div>
     </div>
 </div>
