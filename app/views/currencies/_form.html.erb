@@ -1,5 +1,5 @@
 <div class='container'>
-    <div class='row'>
+    <div class='row'><br/ ><br >
         <div class='col-sm-6 col-sm-offset-3'>
           <h1> <%= form_title %></h1>
                 <% if @currency.errors.any? %>
@@ -28,11 +28,12 @@
                     <p>Position Table:   <%= f.select :position, (1..10)%> </p>
                 </div>
                 <div class='form-check'>
-                    <p>Disponible?</p>
+                    <p>Disponible: 
                     <%= label :available, 'Si', :value => true%>
                     <%= f.radio_button :available, true, :checked => true %>
                     <%= label :available, 'No', :value => false%>
-                    <%= f.radio_button :available, false%>     
+                    <%= f.radio_button :available, false%> 
+                    </p>    
                 </div>
                 <div>
                 <br>

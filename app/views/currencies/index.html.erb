@@ -17,10 +17,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <% @currencies.each do |currency| %>  
-                        <% if currency.name.downcase==='euro'%>
-                            <% currency.country='EU' %>
-                        <% end %>
+                    <% @currencies.each do |currency| %>
+        
                         <% if currency.available? %>    
                              <tr class='success'>
                         <% else %>
