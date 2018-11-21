@@ -18,48 +18,41 @@
                 </thead>
                 <tbody>
                     <% @currencies.each do |currency| %>  
+                        <% if currency.name.downcase==='euro'%>
+                            <% currency.country='EU' %>
+                        <% end %>
                         <% if currency.available? %>    
-                     <tr class='success'>
+                             <tr class='success'>
                         <% else %>
-                    <tr class='danger'>
-                    <% end %>
+                             <tr class='danger'>
+                        <% end %>
                         <% if user_signed_in? %>
                             <th>
-                                <%if currency.name.downcase==='euro'%>
-                                <span class="flag-icon flag-icon-eu"></span>
-                                <% else %>
-                                <span class="flag-icon flag-icon-<%=currency.country.downcase%>">
-                                <% end %>
-                                </span> <%= link_to currency.name, edit_currency_path(currency) %><br>
-                                <%= link_to 'Delete Currency', currency, method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: '¿Are you sure youwant to eliminate the currency?'} %>
+                                <span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span> <%= link_to currency.name, edit_currency_path(currency) %><br>
+                                <%= link_to 'Delete Currency', currency, method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: '¿Are you sure you want to eliminate the currency?'} %>
                             </th>
                         <% else %>
-                        <th>
-                         <%if currency.name.downcase==='euro'%>
-                          <span class="flag-icon flag-icon-eu"></span>
-                          <% else %>
-                            <span class="flag-icon flag-icon-<%=currency.country.downcase%>">
-                         <% end %>
-                            </span> <%= currency.name %> 
-                        </th>
+                            <th>
+                                <span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span> <%= currency.name %> 
+                            </th>
                         <% end %>
-                        <th><%= currency.price_buy %></th>
-                        <th><%= currency.price_sale %></th>   
-                        <th align="center"><%= currency.country %> </th> 
+                            <th><%= currency.price_buy %></th>
+                            <th><%= currency.price_sale %></th>   
+                            <th align="center"><%= currency.country %> </th> 
                         <% if currency.available? %>
                             <th align="center"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></th>
                         <% else %>
                             <th align="center"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
                         <% end %>
-                    </tr> 
+                            </tr> 
                         <% end %>
                 <tbody>
                 </table>
-                <% if user_signed_in?%>
-            <div class='text-right'>
-               <%= link_to 'Add Currency', new_currency_path, class: 'btn btn-primary'%>
-            </div>
-                <% end %>
+                    <% if user_signed_in?%>
+                        <div class='text-right'>
+                         <%= link_to 'Add Currency', new_currency_path, class: 'btn btn-primary'%>
+                        </div>
+                    <% end %>
             </div>
     </div>
 </div>

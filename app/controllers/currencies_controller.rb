@@ -10,7 +10,7 @@ class CurrenciesController < ApplicationController
     end
 
     def create
-        @currency = current_user.currencies.build(currency_params) 
+        @currency = current_user.currencies.build(currency_params)
         if @currency.save
             redirect_to currencies_path, notice: 'Currency added'
         else
