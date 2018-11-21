@@ -2,6 +2,7 @@ class CurrenciesController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     def index
         @currencies = Currency.all
+        @currencies=@currencies.order(:position)
     end
 
     def new
@@ -9,7 +10,7 @@ class CurrenciesController < ApplicationController
     end
 
     def create
-        @currency = current_user.currencies.build(currency_params) 
+        @currency = current_user.currencies.build(currency_params)
         if @currency.save
             redirect_to currencies_path, notice: 'Currency added'
         else
@@ -43,6 +44,6 @@ class CurrenciesController < ApplicationController
 
     private
     def currency_params
-        params.require(:currency).permit(:name, :price_buy, :price_sale, :available, :country)
+        params.require(:currency).permit(:name, :price_buy, :price_sale, :available, :country, :position)
     end
 end

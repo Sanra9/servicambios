@@ -1,7 +1,16 @@
 <div class='container'>
-    <div class='row'>
+    <div class='row'><br/ ><br >
         <div class='col-sm-6 col-sm-offset-3'>
-            <h1> <%= form_title %></h1>
+          <h1> <%= form_title %></h1>
+                <% if @currency.errors.any? %>
+                    <div class="alert alert-danger">
+                    <ul>
+                    <% @currency.errors.full_messages.each do |msg| %>
+                        <li><%= msg %></li>
+                    <% end %>
+                    </ul>
+                    </div>
+                 <% end %>
             <%= form_for @currency do |f| %>
                 <div class='form-group'>
                     <%= f.text_field :name, class: 'form-control input-lg', placeholder:'Name Currency'%>
@@ -13,15 +22,18 @@
                     <%= f.number_field :price_sale, class: 'form-control input-lg', placeholder: 'Price Sale', step: :any %>
                 </div>
                 <div class='form-group'>
-                    <p>Country Flag</p>
-                    <%= f.country_select :country%>
+                    <p>Country Flag:  <%= f.country_select :country%></p>
+                </div>
+                <div class='form-group'>
+                    <p>Position Table:   <%= f.select :position, (1..10)%> </p>
                 </div>
                 <div class='form-check'>
-                    <p>Disponible?</p>
-                    <%= label :available, 'Si', value: true%>
-                    <%= f.radio_button :available, true, :checked => true, :value => true%>
-                    <%= label :available, 'No', value: false%>
-                    <%= f.radio_button :available, false, :checked => true, :value => false%>     
+                    <p>Disponible: 
+                    <%= label :available, 'Si', :value => true%>
+                    <%= f.radio_button :available, true, :checked => true %>
+                    <%= label :available, 'No', :value => false%>
+                    <%= f.radio_button :available, false%> 
+                    </p>    
                 </div>
                 <div>
                 <br>

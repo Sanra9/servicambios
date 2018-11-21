@@ -2,46 +2,55 @@
 <img src='/SERVICAMBIOS_AVISO.jpg' alt='image Home'style="width:100%;height:auto;">
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">
-            <h1>Currencies To Change</h1></br>
+        <div class="col-sm-12">
+            <h1>Currencies To Change ~ Monedas Para Cambiar</h1></br>
         </div>  
             <div class='col-sm-8 col-sm-offset-2'>
             <table class='table table-striped table-lg'>
                 <thead>
                     <tr class="info">
-                        <th>Currency</th>
-                        <th>Price buy</th>
-                        <th>Price sale</th>
-                        <th>Country</th>
-                        <th>Available</th>
+                        <th>Currency <br/ >Modena</th>
+                        <th>Price Buy<br/ >Precio Compra</th>
+                        <th>Price Sale <br/ >Precio Venta</th>
+                        <th>Country <br/ >Pais</th>
+                        <th>Available <br/ >Disponible</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% @currencies.each do |currency| %>  
-                     <tr>
+                    <% @currencies.each do |currency| %>
+        
+                        <% if currency.available? %>    
+                             <tr class='success'>
+                        <% else %>
+                             <tr class='danger'>
+                        <% end %>
                         <% if user_signed_in? %>
                             <th>
                                 <span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span> <%= link_to currency.name, edit_currency_path(currency) %><br>
-                                <%= link_to 'Delete Currency', currency, method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: '¿Are you sure youwant to eliminate the currency?'} %>
+                                <%= link_to 'Delete Currency', currency, method: :delete, class: 'btn btn-danger btn-xs', data: {confirm: '¿Are you sure you want to eliminate the currency?'} %>
                             </th>
                         <% else %>
-                            <th><span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span> <%= currency.name %> </th>
+                            <th>
+                                <span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span> <%= currency.name %> 
+                            </th>
                         <% end %>
-                        <th><%= currency.price_buy %></th>
-                        <th><%= currency.price_sale %></th>   
-                        <th align="center"><%= currency.country %> </th> 
+                            <th><%= currency.price_buy %></th>
+                            <th><%= currency.price_sale %></th>   
+                            <th align="center"><%= currency.country %> </th> 
                         <% if currency.available? %>
                             <th align="center"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></th>
                         <% else %>
                             <th align="center"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
                         <% end %>
-                    </tr> 
+                            </tr> 
                         <% end %>
                 <tbody>
                 </table>
-            <div class='text-right'>
-               <%= link_to 'Add Currency', new_currency_path, class: 'btn btn-primary'%>
-            </div>
+                    <% if user_signed_in?%>
+                        <div class='text-right'>
+                         <%= link_to 'Add Currency', new_currency_path, class: 'btn btn-primary'%>
+                        </div>
+                    <% end %>
             </div>
     </div>
 </div>
