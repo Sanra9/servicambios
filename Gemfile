@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'flag-icons-rails'
 gem 'country_select'
 gem 'annotate'
+gem 'rails-controller-testing'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
