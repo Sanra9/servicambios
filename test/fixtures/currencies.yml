@@ -15,14 +15,16 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  price_buy: 9.99
-  price_sale: 9.99
+euro:
+  name: euro
+  price_buy: 9.5
+  price_sale: 9.7
   available: false
+  country: EU
 
 two:
-  name: MyString
-  price_buy: 9.99
-  price_sale: 9.99
-  available: false
+  name: peso
+  price_buy: 9.8
+  price_sale: 9.9
+  available: true
+  country: CE
