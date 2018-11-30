@@ -1,4 +1,3 @@
-
 <img src='/SERVICAMBIOS_AVISO.jpg' alt='image Home'style="width:100%;height:auto;">
 <div class="container">
     <div class="row">
@@ -18,7 +17,6 @@
                 </thead>
                 <tbody>
                     <% @currencies.each do |currency| %>
-        
                         <% if currency.available? %>    
                              <tr class='success'>
                         <% else %>
@@ -31,7 +29,8 @@
                             </th>
                         <% else %>
                             <th>
-                                <span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span> <%= currency.name %> 
+                                <span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span> <%= currency.name %> <br/ > 
+                                <%= link_to "Estimate", '#',remote: true, class: "btn btn-info btn-xs" %>
                             </th>
                         <% end %>
                             <th><%= currency.price_buy %></th>
@@ -42,7 +41,7 @@
                         <% else %>
                             <th align="center"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
                         <% end %>
-                            </tr> 
+                            </tr>
                         <% end %>
                 <tbody>
                 </table>
@@ -54,3 +53,4 @@
             </div>
     </div>
 </div>
+<div id='currency-modal' class='modal fade'></div>
