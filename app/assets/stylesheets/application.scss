@@ -14,3 +14,12 @@
       display:flex;
       align-items:center;
 }
+.bloque{
+  overflow: hidden;
+    background-color: blue;
+    height: auto;
+    width: 100%;
+    border: black 1px solid;
+    margin: 10px;
+    float: left;
+}

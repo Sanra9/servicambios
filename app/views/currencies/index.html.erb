@@ -1,19 +1,28 @@
 <img src='/SERVICAMBIOS_AVISO.jpg' alt='image Home'style="width:100%;height:auto;"><br><br><br><br>
-<div class="p-3 mb-2 bg-primary text-white">.bg-primary</div>
 
     <div class="col-12 col-md-9">
+      <div class="bloque">
       <div id="currencyCarousel" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-            <% @currencies.each do |currency| %>
-              <li data-target="#currencyCarousel" data-slide-to="<%currency.position%>"></li>
+            <% @currencies.each do |currency, n| %>
+              <li data-target="#currencyCarousel" data-slide-to="#{n}" class="#{'active' if n == 0}"></li>
             <% end  %>
           </ol>
-          <div class="carousel-inner">
+          <div class="carousel-inner" role="listbox">
             <% @currencies.each do |currency| %>
-              <div class="item">
-                    <div class="p-3 mb-2 bg-primary text-white">.bg-primary
+            <% if currency.position == 1 %>
+            <div class="item active">
+              <h5><%= currency.name %></h5>
+              <h5><span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span>  <%= currency.name %> </h5>
+              <tr>
+                <th><span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span>  <%= currency.name %> </th>
+                <th><%= currency.price_buy %></th>
+                <th><%= currency.price_sale %></th>
+              </tr>
+            </div>
+            <% else %>
+            <div class="item">
                   <h5><%= currency.name %></h5>
-                  </div>
                 <div class="carousel-content">
                 <tr>
                   <th><span class="flag-icon flag-icon-<%=currency.country.downcase%>"></span>  <%= currency.name %> </th>
@@ -21,8 +30,9 @@
                   <th><%= currency.price_sale %></th>
                 </tr>
                 </div>
-
               </div>
+            <% end %>
+
             <% end %>
           </div>
       </div>
@@ -34,7 +44,9 @@
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
+    </div>
     </div><br><br>
+
 
 
 
