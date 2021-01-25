@@ -3,4 +3,5 @@ Rails.application.routes.draw do
  devise_for :users
  resources :currencies
  root 'currencies#index'
+ get 'currencies/id', to: 'currencies#modal', as: 'modal'
 end
